@@ -8,5 +8,6 @@ export class ListLoanRequestsDto {
   @IsIn(["pending" , "Prestado"])
   @Type(() => Number)
   toolId?: number;
+  
 }
 

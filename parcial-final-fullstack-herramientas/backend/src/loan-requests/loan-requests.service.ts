@@ -14,7 +14,7 @@ export class LoanRequestsService {
 
   findAll(status: any) {
     // TODO BACK-A: recibir el filtro y aplicarlo en la consulta del repositorio.
-    return this.requests.find({ relations: { tool: true }, order: { id: "ASC" } });
+    return this.requests.find({ where: status === undefined ? {} : { }, relations: { tool: true }, order: { id: "ASC" } });
   }
 
   async findOne(id: number) {
