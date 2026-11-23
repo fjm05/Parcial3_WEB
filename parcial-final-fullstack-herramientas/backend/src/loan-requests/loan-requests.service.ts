@@ -12,7 +12,7 @@ export class LoanRequestsService {
     @InjectRepository(ToolEntity) private readonly tools: Repository<ToolEntity>,
   ) {}
 
-  findAll() {
+  findAll(status: any) {
     // TODO BACK-A: recibir el filtro y aplicarlo en la consulta del repositorio.
     return this.requests.find({ relations: { tool: true }, order: { id: "ASC" } });
   }
