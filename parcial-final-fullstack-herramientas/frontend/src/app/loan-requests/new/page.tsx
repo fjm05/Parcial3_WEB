@@ -1,9 +1,20 @@
 import Link from "next/link";
 import { apiFetch } from "../../../lib/api";
 import type { Tool } from "../../../lib/loan-types";
+import { title } from "process";
 
 async function createLoanRequest(formData: FormData) {
   "use server";
+
+  const response = await apiFetch("/loan-types", {
+    method: "POST", 
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      title: String(formData.get("title") ?? ""),
+      pages: Number(formData.get("pages")),
+      toolId: Number(formData.get("toolId")),
+    }),
+  })
 
   // TODO FRONT-B: leer el formulario, convertir los números y enviar el POST con apiFetch.
   // TODO FRONT-B: si se crea la solicitud, abrir el comprobante con el ID recibido.
